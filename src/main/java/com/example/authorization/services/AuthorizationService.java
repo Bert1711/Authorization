@@ -1,21 +1,26 @@
 package com.example.authorization.services;
 
-import com.example.authorization.repositories.Authorities;
+import com.example.authorization.Authorities;
 import com.example.authorization.repositories.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class AuthorizationService {
-    UserRepository userRepository;
+    final UserRepository userRepository;
 
-    List<Authorities> getAuthorities(String user, String password) {
-        if (isEmpty(user) || isEmpty(password)) {
-            throw new InvalidCredentials("User name or password is empty");
-        }
+    public AuthorizationService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<Authorities> getAuthorities(String user, String password) {
+//        if (isEmpty(user) || isEmpty(password)) {
+//            throw new InvalidCredentials("User name or password is empty");
+//        }
         List<Authorities> userAuthorities = userRepository.getUserAuthorities(user, password);
-        if (isEmpty(userAuthorities)) {
-            throw new UnauthorizedUser("Unknown user " + user);
-        }
+//        if (isEmpty(userAuthorities)) {
+//            throw new UnauthorizedUser("Unknown user " + user);
+//        }
         return userAuthorities;
     }
 
