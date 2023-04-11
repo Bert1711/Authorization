@@ -1,6 +1,9 @@
 package com.example.authorization.services;
 
+import com.example.authorization.repositories.Authorities;
 import com.example.authorization.repositories.UserRepository;
+
+import java.util.List;
 
 public class AuthorizationService {
     UserRepository userRepository;
