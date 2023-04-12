@@ -1,10 +1,14 @@
 package com.example.authorization.model;
 
+import com.example.authorization.Authorities;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class User {
     private String name;
     private String password;
+    private List<Authorities> authoritiesList = new ArrayList<>();
 
     public User() {
     }
@@ -29,6 +33,8 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

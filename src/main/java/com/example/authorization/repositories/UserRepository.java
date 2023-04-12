@@ -3,8 +3,6 @@ package com.example.authorization.repositories;
 import com.example.authorization.Authorities;
 import com.example.authorization.model.User;
 import org.springframework.stereotype.Repository;
-
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -29,7 +27,10 @@ public class UserRepository {
                 .filter(u -> u.getName().equals(user) && u.getPassword().equals(password))
                 .findFirst()
                 .orElse(null);
-
+        // Проверяем, если пользователь не найден
+        if (currentUser == null) {
+            return List.of();
+        }
         // Возвращаем список разрешений для найденного пользователя
         return usersMap.get(currentUser);
     }

@@ -7,12 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+@RestControllerAdvice()
 public class ExceptionHandlerAdvice {
     @ExceptionHandler(InvalidCredentials.class)
     public ResponseEntity<String> handleInvalidCredentialsException(InvalidCredentials ex) {
         return new ResponseEntity<>("INVALID_CREDENTIALS: " + ex.getMessage(),HttpStatus.BAD_REQUEST);
-    }@ExceptionHandler(InvalidCredentials.class)
+    }@ExceptionHandler(UnauthorizedUser.class)
     public ResponseEntity<String> handleInvalidCredentialsException(UnauthorizedUser ex) {
         return new ResponseEntity<>("INVALID_CREDENTIALS: " + ex.getMessage(),HttpStatus.UNAUTHORIZED);
     }
