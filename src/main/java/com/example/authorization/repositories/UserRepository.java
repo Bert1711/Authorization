@@ -32,6 +32,5 @@ public class UserRepository {
 
         // Возвращаем список разрешений для найденного пользователя
         return usersMap.get(currentUser);
-
     }
 }

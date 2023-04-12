@@ -1,6 +1,7 @@
 package com.example.authorization.services;
 
 import com.example.authorization.Authorities;
+import com.example.authorization.model.User;
 import com.example.authorization.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
