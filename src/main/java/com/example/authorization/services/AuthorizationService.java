@@ -17,11 +17,11 @@ public class AuthorizationService {
 
     public List<Authorities> getAuthorities(String user, String password) {
         if (isEmpty(user) || isEmpty(password)) {
-            throw new InvalidCredentials("User name or password is empty");
+            throw new InvalidCredentials("Логин или пароль отсутствует");
         }
         List<Authorities> userAuthorities = userRepository.getUserAuthorities(user, password);
         if (isEmpty(userAuthorities)) {
-            throw new UnauthorizedUser("Unknown user " + user);
+            throw new UnauthorizedUser("Пользователь с логином '" + user + "' не зарегистрирован");
         }
         return userAuthorities;
     }

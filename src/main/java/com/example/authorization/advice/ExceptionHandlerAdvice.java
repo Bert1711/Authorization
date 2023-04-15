@@ -13,7 +13,8 @@ public class ExceptionHandlerAdvice {
     public ResponseEntity<String> handleInvalidCredentialsException(InvalidCredentials ex) {
         return new ResponseEntity<>("INVALID_CREDENTIALS: " + ex.getMessage(),HttpStatus.BAD_REQUEST);
     }@ExceptionHandler(UnauthorizedUser.class)
-    public ResponseEntity<String> handleInvalidCredentialsException(UnauthorizedUser ex) {
+    public ResponseEntity<String> handleUnauthorizedUserException(UnauthorizedUser ex) {
+        System.err.println(ex.getMessage());
         return new ResponseEntity<>("INVALID_CREDENTIALS: " + ex.getMessage(),HttpStatus.UNAUTHORIZED);
     }
 }
