@@ -3,6 +3,9 @@ package com.example.authorization.repositories;
 import com.example.authorization.Authorities;
 import com.example.authorization.model.User;
 import org.springframework.stereotype.Repository;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -15,10 +18,11 @@ public class UserRepository {
         User user2 = new User("Boba", "pass2");
         User user3 = new User("Buba", "pass3");
         usersMap = new ConcurrentHashMap<>();
-        usersMap.put(user1, List.of(Authorities.READ));
-        usersMap.put(user2, List.of(Authorities.READ, Authorities.WRITE));
-        usersMap.put(user3, List.of(Authorities.READ, Authorities.WRITE, Authorities.DELETE));
+        usersMap.put(user1, Arrays.asList(Authorities.READ));
+        usersMap.put(user2, Arrays.asList(Authorities.READ, Authorities.WRITE));
+        usersMap.put(user3, Arrays.asList(Authorities.READ, Authorities.WRITE, Authorities.DELETE));
     }
+
 
 
     public List<Authorities> getUserAuthorities(String user, String password) {
@@ -29,8 +33,9 @@ public class UserRepository {
                 .orElse(null);
         // Проверяем, если пользователь не найден
         if (currentUser == null) {
-            return List.of();
+            return Collections.emptyList();
         }
+
         // Возвращаем список разрешений для найденного пользователя
         return usersMap.get(currentUser);
     }
